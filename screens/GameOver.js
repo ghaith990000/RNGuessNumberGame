@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView } from 'react-native'
 import React from 'react'
-import Title from '../components/ui/Title.ios'
+import Title from '../components/ui/Title'
 import Colors from '../constants/colors'
 import PrimaryButton from '../components/ui/PrimaryButton'
 

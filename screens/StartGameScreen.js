@@ -2,7 +2,7 @@ import { TextInput, View, StyleSheet, Pressable, Alert, useWindowDimensions, Key
 import PrimaryButton from "../components/ui/PrimaryButton"
 import { useEffect, useState } from "react"
 import Colors from '../constants/colors';
-import Title from "../components/ui/Title.ios";
+import Title from "../components/ui/Title";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
 const StartGameScreen = ({onPickNumber}) => {
