@@ -2,15 +2,40 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, ImageBackground, SafeAreaView} from 'react-native';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
-import { LinearGradient } from 'expo-linear-gradient'
-import { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect, useState } from 'react';
 import Colors from './constants/colors';
 import GameOver from './screens/GameOver';
 
+SplashScreen.preventAutoHideAsync()
+.then((result)  => console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`), 
+)
+.catch(console.warn)
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+
+  const [fontsLoaded] = useFonts({
+    OpenSans: require('./assets/fonts/OpenSans-Regular.ttf'),
+    OpenSansBold: require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  useEffect(() => {
+    async function hideSplashScreen(){
+      await SplashScreen.hideAsync()
+    }
+
+    if(fontsLoaded){
+      hideSplashScreen()
+    }
+  }, [fontsLoaded])
+
+  if(!fontsLoaded){
+    return null;
+  }
 
   const pickedNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber);
